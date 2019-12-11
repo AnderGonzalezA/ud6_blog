@@ -38,6 +38,19 @@
               <span class="sr-only">(current)</span>
             </a>
           </li>
+          <li class="nav-item active">
+            <a class="nav-link" href="{{route('register')}}">Register
+              <span class="sr-only">(current)</span>
+            </a>
+          </li>
+          <li class="nav-item active">
+            <a class="nav-link" href="{{route('logout')}}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">Logout
+              <span class="sr-only">(current)</span>
+            </a>
+            <form id="logout-form" action="{{ route('logout') }}" method="POST" >
+              @csrf
+            </form>
+          </li>
         </ul>
       </div>
     </div>
