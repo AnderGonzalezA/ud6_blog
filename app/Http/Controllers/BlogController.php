@@ -14,7 +14,7 @@ class BlogController extends Controller
      */
     public function index()
     {
-        $posts = Post::all();
+        $posts = Post::latest('published_at')->get();
 
         return view('welcome',['posts' => $posts]);
     }
