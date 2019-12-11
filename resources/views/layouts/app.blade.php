@@ -33,6 +33,11 @@
               <span class="sr-only">(current)</span>
             </a>
           </li>
+          <li class="nav-item active">
+            <a class="nav-link" href="{{route('home')}}">Login
+              <span class="sr-only">(current)</span>
+            </a>
+          </li>
         </ul>
       </div>
     </div>
