@@ -10,7 +10,7 @@ class Post extends Model
     return $this->belongsTo('App\User');
   }
 
-  public function categories(){
-    return $this->hasMany('App\Category');
+  public function category(){
+    return $this->belongsTo('App\Category');
   }
 }
