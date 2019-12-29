@@ -2,10 +2,15 @@
 
 namespace App\Http\Controllers;
 
+use App\Post;
 use Illuminate\Http\Request;
 
 class PostController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('role:editor');
+    }
     /**
      * Display a listing of the resource.
      *
@@ -15,7 +20,7 @@ class PostController extends Controller
     {
         $posts = Post::latest('published_at')->get();
 
-        return view('home',['posts' => $posts]);
+        return view('posts.index',['posts' => $posts]);
     }
 
     /**

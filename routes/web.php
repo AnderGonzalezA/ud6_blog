@@ -11,12 +11,14 @@
 |
 */
 
-Route::get('/', 'BlogController@index');
+Route::get('/', 'BlogController@index')->name('welcome');
 
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
 
-Route::get('/admin','AdminController@index')->name('admin');
+Route::get('/admin', 'AdminController@index')->name('admin');
 
-Route::get('/editor', 'GestorController@index')->name('editor');
+Route::get('/editor', 'EditorController@index')->name('editor');
+
+Route::resource('posts','PostController');
