@@ -17,7 +17,7 @@
         <p>{{$post->published_at}}</p>
         <hr>
         <!-- Preview Image -->
-        <img class="img-fluid rounded" src="http://placehold.it/900x300" alt="">
+        <img class="img-fluid rounded" src="{{url('img/' . $post->image)}}" alt="">
         <hr>
         <!-- Post Content -->
         <p class="lead">{{$post->excerpt}}</p>

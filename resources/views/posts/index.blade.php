@@ -5,7 +5,7 @@
   <!-- Page Content -->
   <div class="container">
   <a href= "{{route('posts.create')}}"><button type="button" class="btn btn-secondary">New Post</button></a><br><br>
-  
+
 
   <table class="table table-condensed">
     <thead>
@@ -23,7 +23,7 @@
       <tr>
         <td>{{$p->id}}</td>
         <td>{{$p->title}}</td>
-        <td>{{date("j/m/Y H:i:s", strtotime($p->published_at))}}</td>
+        <td>{{date("j/m/Y H:i:s", strtotime($p->created_at))}}</td>
         <td>
         <a title="Ver" href="{{route ('posts.show',$p->id)}}"><i class="fa fa-eye" style="color:black"></i></a>
         </td>

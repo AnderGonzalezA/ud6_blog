@@ -11,10 +11,12 @@
   <title>Blog Post  - Start Bootstrap Template</title>
 
   <!-- Bootstrap core CSS -->
-  <link href="css/bootstrap.min.css" rel="stylesheet">
+  <link href="{{asset('css/bootstrap.min.css')}}" rel="stylesheet">
 
   <!-- Custom styles for this template -->
-  <link href="css/blog-post.css" rel="stylesheet">
+  <link href="{{asset('css/blog-post.css')}}" rel="stylesheet">
+
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
 </head>
 
@@ -28,12 +30,12 @@
       </button>
       <div class="collapse navbar-collapse" id="navbarResponsive">
         <ul class="navbar-nav ml-auto">
+          <li class="nav-item active">
+            <a class="nav-link" href="{{route('welcome')}}">Welcome
+              <span class="sr-only">(current)</span>
+            </a>
+          </li>
           @guest
-            <li class="nav-item active">
-              <a class="nav-link" href="{{route('welcome')}}">Welcome
-                <span class="sr-only">(current)</span>
-              </a>
-            </li>
             <li class="nav-item active">
               <a class="nav-link" href="{{route('home')}}">Login
                 <span class="sr-only">(current)</span>
