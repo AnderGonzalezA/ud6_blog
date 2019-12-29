@@ -76,7 +76,8 @@
                   <span class="sr-only">(current)</span>
                 </a>
               </li>
-            @else
+            @endif
+            @if (Auth::user()->hasRole("admin"))
               <li class="nav-item active">
                 <a class="nav-link" href="{{route('admin')}}">Users
                   <span class="sr-only">(current)</span>

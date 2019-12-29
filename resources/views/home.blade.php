@@ -2,10 +2,8 @@
 
 @section('content')
 <div class="container">
-  @if (Auth::user()->hasRole("admin"))
-    Bienvenido a la interfaz de un usuario administrador.
-  @else
-    Bienvenido a la interfaz de un usuario editor.
-  @endif
+  <main role="main" class="col-md-9 ml-sm-auto col-lg-10 px-4">
+    <h1>Bienvenido al panel de un usuario editor</h1>
+  </main>
 </div>
 @endsection

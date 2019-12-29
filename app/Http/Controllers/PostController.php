@@ -62,7 +62,7 @@ class PostController extends Controller
 
         $post->save();
 
-        $posts = Post::latest('published_at')->get();
+        $posts = Post::latest('published_at')->where('user_id',auth()->user()->id)->get();
 
         return view('posts.index',['posts' => $posts]);
     }
@@ -123,7 +123,7 @@ class PostController extends Controller
 
         $post->save();
 
-        $posts = Post::latest('published_at')->get();
+        $posts = Post::latest('published_at')->where('user_id',auth()->user()->id)->get();
 
         return view('posts.index',['posts' => $posts]);
     }
@@ -139,7 +139,7 @@ class PostController extends Controller
 
       Post::find($id)->delete();
 
-      $posts = Post::all();
+      $posts = Post::latest('published_at')->where('user_id',auth()->user()->id)->get();
 
       return view('posts.index',['posts'=>$posts]);
     }
