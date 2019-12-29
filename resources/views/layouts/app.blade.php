@@ -5,11 +5,10 @@
 
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  <meta name="description" content="">
-  <meta name="author" content="">
+  <meta name="theme-color" content="#563d7c">
 
-  <title>Blog Post  - Start Bootstrap Template</title>
-
+  <title>ud6_laravel_roles_blog_base</title>
+  <link rel="canonical" href="https://getbootstrap.com/docs/4.4/examples/dashboard/">
   <!-- Bootstrap core CSS -->
   <link href="{{asset('css/bootstrap.min.css')}}" rel="stylesheet">
 
@@ -17,7 +16,31 @@
   <link href="{{asset('css/blog-post.css')}}" rel="stylesheet">
 
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <link href="{{asset('css/dashboard.css')}}" rel="stylesheet">
 
+  <script src="{{ URL::asset('js/dashboard.js') }}"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/feather-icons/4.9.0/feather.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.3/Chart.min.js"></script>
+  <style>
+    .bd-placeholder-img {
+      font-size: 1.125rem;
+      text-anchor: middle;
+      -webkit-user-select: none;
+      -moz-user-select: none;
+      -ms-user-select: none;
+      user-select: none;
+    }
+
+    @media (min-width: 768px) {
+      .bd-placeholder-img-lg {
+        font-size: 3.5rem;
+      }
+    }
+  </style>
+  <style type="text/css">
+    @-webkit-keyframes chartjs-render-animation{from{opacity:0.99}to{opacity:1}}@keyframes chartjs-render-animation{from{opacity:0.99}to{opacity:1}}.chartjs-render-monitor{-webkit-animation:chartjs-render-animation 0.001s;animation:chartjs-render-animation 0.001s;}
+  </style>
 </head>
 
 <body>
@@ -31,13 +54,13 @@
       <div class="collapse navbar-collapse" id="navbarResponsive">
         <ul class="navbar-nav ml-auto">
           <li class="nav-item active">
-            <a class="nav-link" href="{{route('welcome')}}">Welcome
+            <a class="nav-link" href="{{route('blog')}}">Blog
               <span class="sr-only">(current)</span>
             </a>
           </li>
           @guest
             <li class="nav-item active">
-              <a class="nav-link" href="{{route('home')}}">Login
+              <a class="nav-link" href="{{route('login')}}">Login
                 <span class="sr-only">(current)</span>
               </a>
             </li>
@@ -47,16 +70,19 @@
               </a>
             </li>
           @else
-            <li class="nav-item active">
-              <a class="nav-link" href="{{route('home')}}">Home
-                <span class="sr-only">(current)</span>
-              </a>
-            </li>
-            <li class="nav-item active">
-              <a class="nav-link" href="{{route('posts.index')}}">Posts
-                <span class="sr-only">(current)</span>
-              </a>
-            </li>
+            @if (Auth::user()->hasRole("editor"))
+              <li class="nav-item active">
+                <a class="nav-link" href="{{route('posts.index')}}">Posts
+                  <span class="sr-only">(current)</span>
+                </a>
+              </li>
+            @else
+              <li class="nav-item active">
+                <a class="nav-link" href="{{route('admin')}}">Users
+                  <span class="sr-only">(current)</span>
+                </a>
+              </li>
+            @endif
             <li class="nav-item active">
               <a class="nav-link" href="{{ route('logout') }}"
               onclick="event.preventDefault();
