@@ -15,10 +15,9 @@ class AdminRole
      */
     public function handle($request, Closure $next)
     {
-      if(auth()->user()->hasRole("admin")){
-        return $next($request);
-      }else{
-        return redirect('/');
+      if (! $request->user()->hasRole("admin")) {
+        return redirect('editor');
       }
+      return $next($request);
     }
 }

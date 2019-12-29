@@ -1,7 +1,9 @@
 @extends('layouts.app')
+
 @section('content')
 <div class="container">
   @foreach ($posts as $post)
+    @if (Auth::user()->id === $post->user->id)
     <div class="row">
       <!-- Post Content Column -->
       <div class="col-lg-8">
@@ -44,6 +46,7 @@
       </div>
     </div>
     <!-- /.row -->
+    @endif
   @endforeach
 </div>
 @endsection
