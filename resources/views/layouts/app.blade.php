@@ -28,29 +28,44 @@
       </button>
       <div class="collapse navbar-collapse" id="navbarResponsive">
         <ul class="navbar-nav ml-auto">
-          <li class="nav-item active">
-            <a class="nav-link" href="#">Home
-              <span class="sr-only">(current)</span>
-            </a>
-          </li>
-          <li class="nav-item active">
-            <a class="nav-link" href="{{route('home')}}">Login
-              <span class="sr-only">(current)</span>
-            </a>
-          </li>
-          <li class="nav-item active">
-            <a class="nav-link" href="{{route('register')}}">Register
-              <span class="sr-only">(current)</span>
-            </a>
-          </li>
-          <li class="nav-item active">
-            <a class="nav-link" href="{{route('logout')}}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">Logout
-              <span class="sr-only">(current)</span>
-            </a>
-            <form id="logout-form" action="{{ route('logout') }}" method="POST" >
-              @csrf
-            </form>
-          </li>
+          @guest
+            <li class="nav-item active">
+              <a class="nav-link" href="{{route('welcome')}}">Welcome
+                <span class="sr-only">(current)</span>
+              </a>
+            </li>
+            <li class="nav-item active">
+              <a class="nav-link" href="{{route('home')}}">Login
+                <span class="sr-only">(current)</span>
+              </a>
+            </li>
+            <li class="nav-item active">
+              <a class="nav-link" href="{{route('register')}}">Register
+                <span class="sr-only">(current)</span>
+              </a>
+            </li>
+          @else
+            <li class="nav-item active">
+              <a class="nav-link" href="{{route('home')}}">Home
+                <span class="sr-only">(current)</span>
+              </a>
+            </li>
+            <li class="nav-item active">
+              <a class="nav-link" href="{{route('posts.index')}}">Posts
+                <span class="sr-only">(current)</span>
+              </a>
+            </li>
+            <li class="nav-item active">
+              <a class="nav-link" href="{{ route('logout') }}"
+              onclick="event.preventDefault();
+              document.getElementById('logout-form').submit();">
+              Log out
+              </a>
+              <form id="logout-form" action="{{ route('logout') }}" method="POST" >
+                @csrf
+              </form>
+            </li>
+          @endguest
         </ul>
       </div>
     </div>
