@@ -77,6 +77,8 @@ class PostController extends Controller
     {
       $post = Post::find($id);
 
+      $this->authorize('view', $post);
+
       return view('posts.show', ['post' => $post]);
     }
 
@@ -88,6 +90,10 @@ class PostController extends Controller
      */
     public function edit($id)
     {
+        $post = Post::find($id);
+
+        $this->authorize('view', $post);
+
         $categories = Category::all();
 
         return view('posts.edit',['post' => Post::find($id),'categories' => $categories]);
@@ -103,6 +109,8 @@ class PostController extends Controller
     public function update(Request $request, $id)
     {
         $post = Post::find($id);
+
+        $this->authorize('update', $post);
 
         $post->title = $request->input('title');
         $post->excerpt = $request->input('excerpt');
@@ -136,8 +144,11 @@ class PostController extends Controller
      */
     public function destroy($id)
     {
+      $post = Post::find($id);
 
-      Post::find($id)->delete();
+      $this->authorize('delete', $post);
+
+      $post->delete();
 
       $posts = Post::latest('published_at')->where('user_id',auth()->user()->id)->get();
 
